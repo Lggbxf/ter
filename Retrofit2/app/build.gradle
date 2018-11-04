@@ -37,4 +37,7 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
     compile 'com.squareup.retrofit2:converter-gson:2.0.2' // 用Gson解析json的转换器
+
+
+    compile 'org.ligboy.retrofit2:converter-fastjson-android:2.1.0'//用fastjson解析json的转换器
 }

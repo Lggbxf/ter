@@ -5,41 +5,23 @@ package cn.edu.retrofit.retrofit2;
  */
 
 public class User {
-    //{"name":"kewen","age":"24","hobbit":"Doto","hobbit2":"wow"}
-    private String name;
-    private String age;
-    private String hobbit;
-    private String hobbit2;
+    //{"name":"John","sex":"male","age":22,"is_student":true}
+    private int errno;
+    private String data;
 
-    public String getName() {
-        return name;
+    public int getErrno() {
+        return errno;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setErrno(int errno) {
+        this.errno = errno;
     }
 
-    public String getAge() {
-        return age;
+    public String getData() {
+        return data;
     }
 
-    public void setAge(String age) {
-        this.age = age;
-    }
-
-    public String getHobbit() {
-        return hobbit;
-    }
-
-    public void setHobbit(String hobbit) {
-        this.hobbit = hobbit;
-    }
-
-    public String getHobbit2() {
-        return hobbit2;
-    }
-
-    public void setHobbit2(String hobbit2) {
-        this.hobbit2 = hobbit2;
+    public void setData(String data) {
+        this.data = data;
     }
 }

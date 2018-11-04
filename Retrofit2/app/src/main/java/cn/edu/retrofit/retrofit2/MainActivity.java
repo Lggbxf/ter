@@ -11,16 +11,17 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+import retrofit2.converter.fastjson.FastJsonConverterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String api_url = "http://192.168.1.118:8080/demo/";
+    public static final String api_url = "http://video.enjoynut.cn/";
     public static final String tag = "MainActivity";
 
     public interface ApiService{
-        @GET("index.jsp")
+        @GET("api.php?req=wellChosenList")
         Call<User> getUser();
     }
 
@@ -37,14 +38,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getList() {
-        Retrofit retrofit = new Retrofit.Builder().baseUrl(api_url).addConverterFactory(GsonConverterFactory.create()).build();
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(api_url).addConverterFactory(FastJsonConverterFactory.create()).build();
         ApiService service = retrofit.create(ApiService.class);
         Call<User> call = service.getUser();
        // Log.i(tag,call.toString());
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
-                Log.i(tag, response.body().getName() + " " + response.body().getAge() + " " + response.body().getHobbit() + " " + response.body().getHobbit2());
+                Log.i(tag,"OnResponse方法。。。");
+                Log.i(tag, response.body().getErrno() + " " + response.body().getData());
                 try {
                     System.out.println(response.body().toString());
                 } catch (Exception e) {
@@ -55,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
+                Log.i(tag,"onFailure方法。。。");
                 Log.i(tag,"Error:"+t);
             }
         });
